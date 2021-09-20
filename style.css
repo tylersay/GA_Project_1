@@ -1,0 +1,24 @@
+.container:-webkit-full-screen,
+.container:-moz-full-screen,
+.container:-ms-fullscreen,
+.container:fullscreen {
+    width: 100%;
+    height: 100%;
+    background: cover;
+    } 
+
+.landingTitle {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 600%;
+  cursor: pointer;
+
+}
+
+.tyler {
+  display: flex;
+  justify-content: right;
+  /* font-weight: bold; */
+
+}
