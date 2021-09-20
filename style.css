@@ -7,13 +7,35 @@
     background: cover;
     } 
 
-.landingTitle {
+.landingTitle, .playerDisplay{
   display: flex;
   justify-content: center;
   font-weight: bold;
   font-size: 600%;
-  cursor: pointer;
 
+}
+.landingTitle {
+  cursor: pointer;
+}
+
+.leggo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 600%;
+  color: red;
+}
+
+.sorry {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 300%;
+    color: red;
+  
 }
 
 .tyler {
@@ -21,4 +43,9 @@
   justify-content: right;
   /* font-weight: bold; */
 
+}
+
+.reRollButton {
+  color: red;
+  font-size: 25%
 }
