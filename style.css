@@ -14,9 +14,9 @@
   font-size: 600%;
 
 }
-.landingTitle {
+/* .landingTitle {
   cursor: pointer;
-}
+} */
 
 .leggo {
   display: flex;
@@ -48,4 +48,19 @@
 .reRollButton {
   color: red;
   font-size: 25%
+}
+
+.bidDice {
+  cursor: pointer;
+}
+
+.faceValueTable {
+  width: 100%
+}
+
+.sweat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 300%;
 }
