@@ -5,6 +5,14 @@ const $dice = $("<span>").text("Dice!").slideUp( 300 ).delay( 2800 ).fadeIn(  10
 const $tyler = $("<div class='tyler'>").text("by Tyler111").slideUp( 300 ).delay( 3800 ).fadeIn(  100 );
 const $player1 = $("<div class='playerDisplay'>").text("Player 1")
 const $player2 = $("<div class='playerDisplay'>").text("Player 2")
+const $player1Bid = $("<div class='playerDisplay'>").text("Player 1 Bid")
+const $player2Bid = $("<div class='playerDisplay'>").text("Player 2 Bid")
+const $player2CatchesBluff = $("<div class='playerDisplay'>").text("Player 2 Caught Player 1's Bluff").css("color", "red");
+const $player1CatchesBluff = $("<div class='playerDisplay'>").text("Player 1 Caught Player 2's Bluff").css("color", "red");
+const $player2Wrong = $("<div class='playerDisplay'>").text("Player 1 is Master of Deception, Player 1 WINS").css("color", "red");
+const $player1Wrong = $("<div class='playerDisplay'>").text("Player 2 is Master of Deception, Player 2 WINS").css("color", "red");
+
+
 
 let $landingTitle = $drinking.append($bluff).append($dice)
 
@@ -23,12 +31,54 @@ const $leggo = $("<button>").addClass("leggo").text("LEGGO")
 const $sryIBlur1 = $("<button>").addClass("sorry").text("Sry I Blurr")
 const $sryIBlur2 = $("<button>").addClass("sorry").text("Sry I Blurr")
 const $okCan = $("<button>").addClass("okCan").text("OK Can!").css("color", "red");
-const $bid = $("<button>").addClass("sweat").text("I  want  to  BID!").css("color", "red");
-const $callBluff = $("<button>").addClass("sweat").text("I  call  BLUFF!").css("color", "red");
+const $okCan2 = $("<button>").addClass("okCan").text("OK Can!").css("color", "red");
+const $bid2 = $("<button>").addClass("sweat").text("I  want  to  BID!").css("color", "red");
+const $bid1 = $("<button>").addClass("sweat").text("I  want  to  BID!").css("color", "red");
+const $callBluff2 = $("<button>").addClass("sweat").text("I  call  BLUFF!").css("color", "red");
+const $callBluff1 = $("<button>").addClass("sweat").text("I  call  BLUFF!").css("color", "red");
 
+// $callBluff2.on("click", () => {
+//   $(".container").empty().append($player1)
+//   numToDice1($player1Arr, $player1)
+//   $(".container").append($player2)
+//   numToDice1($player2Arr, $player2)
+//   $(".container").append($player1Bid)
+//   // $player1Bid.append()
+//   for (let i =0; i < +$bidConfirmP1[0]; i++) {
+//     console.log($bidConfirmP1[0]);
+//     if ($bidDice1[0] === 1) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/tqvRF9n/oneFace.png").attr("id", 1).height(100).width(100))} 
+//     else if ($bidDice1[0] === 2) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/ctWXC65/twoFace.png").attr("id", 2).height(100).width(100))}
+//     else if ($bidDice1[0] === 3) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/x5tVtcF/three-Face.png").attr("id", 3).height(100).width(100))}
+//     else if ($bidDice1[0] === 4) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/0QsBwD8/fourFace.png").attr("id", 4).height(100).width(100))}
+//     else if ($bidDice1[0] === 5) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/P4W27hm/fiveFace.png").attr("id", 5).height(100).width(100))}
+//     else if ($bidDice1[0] === 6) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/hWr196n/sixFace.png").attr("id", 6).height(100).width(100))}
+//   }
+//   ////// WIN CONDITION for Player 2
+//   const $countOccurrences = (arr, n, x) => {
+  
+//     for (let i = 0; i < n; i++) {
+//       if (x === arr[i]) $countPool++;
+//     }
+       
+//   }
+  
+//   $countOccurrences($pool, $pool.length, $bidDice1[0])
+  
+//   if (count >= $bidConfirmP1[0]) {
+//     console.log("player 1 was truthful");
+//     $(".container").append($player2Wrong)
+//   } else {
+//     console.log("player 1 caught");
+//     $(".container").append($player2CatchesBluff)
+//     }
+
+
+// })
 
 let $player1Arr = []
 let $player2Arr = []
+let $pool = $player1Arr.concat($player2Arr)
+let $countPool = 0
 const NUMBER_OF_DICE = 5
 
 // create and store player dices
@@ -114,7 +164,7 @@ const $dicePicToArray = () => {
       else if ($bidDice2[0] === 5) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/P4W27hm/fiveFace.png").attr("id", "5").height(100).width(100))}
       else if ($bidDice2[0] === 6) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/hWr196n/sixFace.png").attr("id", "6").height(100).width(100))}
     }
-    $bidConfirmTable.append($okCan)
+   
   })
 }
 
@@ -217,14 +267,7 @@ const main = () => {
     $tyler.remove();
     $(".container").append($player1)
     $(".container").append($rollButton1);
-    // $image.remove();
 
-//   //   $(".container").append($('<input>').attr({
-//   //     type: 'text',
-//   //     id: 'player1',
-//   //     name: 'Player 1 Name:'
-//   // }));
-    
   });
   
   // click roll button
@@ -283,6 +326,7 @@ const main = () => {
     $(".container").append($("<div class='playerDisplay'>").text("Player 2")).css("font-size", "10px")
 
     $(".container").append($leggo);
+    $pool = $player1Arr.concat($player2Arr)
   })
 
 
@@ -294,7 +338,7 @@ const main = () => {
     ($reRollButton1).remove();
     ($acceptBtn).remove();
     $(".container").empty().append($player1)
-    $player1.append($("<div>").text(": Bid"));
+    // $player1.append($("<div>").text(": Bid"));
     $(".container").append($sryIBlur1);
   
     $sryIBlur1.one("click", () => {
@@ -336,22 +380,67 @@ const main = () => {
       $bidConfirmTable.append($okCan)
     })
   })
+
+    //////////////////////
+  // start player 2 call bluff
+  //////////////////////
+  $callBluff2.on("click", () => {
+    $(".container").empty().append($player1)
+    numToDice1($player1Arr, $player1)
+    $(".container").append($player2)
+    numToDice1($player2Arr, $player2)
+    $(".container").append($player1Bid)
+    // $player1Bid.append()
+    for (let i =0; i < +$bidConfirmP1[0]; i++) {
+      console.log($bidConfirmP1[0]);
+      if ($bidDice1[0] === 1) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/tqvRF9n/oneFace.png").attr("id", 1).height(100).width(100))} 
+      else if ($bidDice1[0] === 2) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/ctWXC65/twoFace.png").attr("id", 2).height(100).width(100))}
+      else if ($bidDice1[0] === 3) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/x5tVtcF/three-Face.png").attr("id", 3).height(100).width(100))}
+      else if ($bidDice1[0] === 4) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/0QsBwD8/fourFace.png").attr("id", 4).height(100).width(100))}
+      else if ($bidDice1[0] === 5) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/P4W27hm/fiveFace.png").attr("id", 5).height(100).width(100))}
+      else if ($bidDice1[0] === 6) {$player1Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/hWr196n/sixFace.png").attr("id", 6).height(100).width(100))}
+    }
+    ////// WIN CONDITION for Player 2
+    const $countOccurrences = (arr, n, x) => {
+    
+      for (let i = 0; i < n; i++) {
+        if (x === arr[i] || arr[i] === 1) $countPool++;
+      }
+         
+    }
+    
+    $countOccurrences($pool, $pool.length, $bidDice1[0])
+    
+    if ($countPool >= $bidConfirmP1[0]) {
+      console.log("player 1 was truthful");
+      $(".container").append($player2Wrong)
+    } else {
+      console.log("player 1 caught");
+      $(".container").append($player2CatchesBluff)
+      }
+  
+  
+  })
+
+
+
   //////////////////////
   // start player 2 bid
   //////////////////////
      $okCan.on("click", () => {
       
       $(".container").empty().append($player2)
+      $okCan.remove();
       $reRollButton2.remove()
       $acceptBtn2.remove()
       $bidConfirmTable.remove();
 
-      $(".container").append($bid).append($callBluff)
+      $(".container").append($bid2).append($callBluff2)
      })
 
-  $bid.on("click", () => {
-    $bid.remove();
-    $callBluff.remove();
+  $bid2.on("click", () => {
+    $bid2.remove();
+    $callBluff2.remove();
     $player2.append($("<div>").text(": Bid"));
     $(".container").append($sryIBlur2);
   
@@ -376,7 +465,7 @@ const main = () => {
     $buildBidFaceTable();
     $buildBidConfirmTable();
     $bidConfirmCell.empty();
-
+    $bidConfirmTable.append($okCan2)
     $(".qty-btn").on("click", () =>{
 
      $bidConfirmCell.empty();
@@ -401,29 +490,164 @@ const main = () => {
 
     });
 
-    $(".bidDice").on("click", (event) => {
+    // $(".bidDice").on("click", (event) => {
       
-      $bidDice2 = []
-      $bidDice2.push(parseInt(event.target.id))
-      console.log($bidDice2)
-      $bidConfirmCell.empty();
-      for (let i =0; i < +$bidConfirmP2[0]; i++) {
-        console.log($bidConfirmP2[0]);
-        console.log($bidDice2);
-        if ($bidDice2[0] === 1) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/tqvRF9n/oneFace.png").attr("id", "1").height(100).width(100))} 
-        else if ($bidDice2[0] === 2) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/ctWXC65/twoFace.png").attr("id", "2").height(100).width(100))}
-        else if ($bidDice2[0] === 3) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/x5tVtcF/three-Face.png").attr("id", "3").height(100).width(100))}
-        else if ($bidDice2[0] === 4) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/0QsBwD8/fourFace.png").attr("id", "4").height(100).width(100))}
-        else if ($bidDice2[0] === 5) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/P4W27hm/fiveFace.png").attr("id", "5").height(100).width(100))}
-        else if ($bidDice2[0] === 6) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/hWr196n/sixFace.png").attr("id", "6").height(100).width(100))}
-      }
-      $bidConfirmTable.append($okCan)
-    })
-
+    //   $bidDice2 = []
+    //   $bidDice2.push(parseInt(event.target.id))
+    //   console.log($bidDice2)
+    //   $bidConfirmCell.empty();
+    //   for (let i =0; i < +$bidConfirmP2[0]; i++) {
+    //     console.log($bidConfirmP2[0]);
+    //     console.log($bidDice2);
+    //     if ($bidDice2[0] === 1) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/tqvRF9n/oneFace.png").attr("id", "1").height(100).width(100))} 
+    //     else if ($bidDice2[0] === 2) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/ctWXC65/twoFace.png").attr("id", "2").height(100).width(100))}
+    //     else if ($bidDice2[0] === 3) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/x5tVtcF/three-Face.png").attr("id", "3").height(100).width(100))}
+    //     else if ($bidDice2[0] === 4) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/0QsBwD8/fourFace.png").attr("id", "4").height(100).width(100))}
+    //     else if ($bidDice2[0] === 5) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/P4W27hm/fiveFace.png").attr("id", "5").height(100).width(100))}
+    //     else if ($bidDice2[0] === 6) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/hWr196n/sixFace.png").attr("id", "6").height(100).width(100))}
+    //   }
+    //   $bidConfirmTable.append($okCan2)
+    // })
   })
 
 
 
+
+  //////////////////////
+  // start player 1 call bluff
+  //////////////////////
+  $callBluff1.on("click", () => {
+    $(".container").empty().append($player1)
+    numToDice1($player1Arr, $player1)
+    $(".container").append($player2)
+    numToDice1($player2Arr, $player2)
+    $(".container").append($player2Bid)
+    // $player2Bid.append()
+    for (let i =0; i < +$bidConfirmP2[0]; i++) {
+      console.log($bidConfirmP2[0]);
+      if ($bidDice2[0] === 1) {$player2Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/tqvRF9n/oneFace.png").attr("id", 1).height(100).width(100))} 
+      else if ($bidDice2[0] === 2) {$player2Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/ctWXC65/twoFace.png").attr("id", 2).height(100).width(100))}
+      else if ($bidDice2[0] === 3) {$player2Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/x5tVtcF/three-Face.png").attr("id", 3).height(100).width(100))}
+      else if ($bidDice2[0] === 4) {$player2Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/0QsBwD8/fourFace.png").attr("id", 4).height(100).width(100))}
+      else if ($bidDice2[0] === 5) {$player2Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/P4W27hm/fiveFace.png").attr("id", 5).height(100).width(100))}
+      else if ($bidDice2[0] === 6) {$player2Bid.append($("<img class='bidDice'>").attr("src", "https://i.ibb.co/hWr196n/sixFace.png").attr("id", 6).height(100).width(100))}
+    }
+    ////// WIN CONDITION for Player 1
+    const $countOccurrences = (arr, n, x) => {
+    
+      for (let i = 0; i < n; i++) {
+        if (x === arr[i] || arr[i] === 1) $countPool++;
+      }
+         
+    }
+    
+    $countOccurrences($pool, $pool.length, $bidDice2[0])
+    
+    if ($countPool >= $bidConfirmP2[0]) {
+      console.log("player 2 was truthful");
+      $(".container").append($player1Wrong)
+      } else {
+        console.log("player 2 caught");
+        $(".container").append($player1CatchesBluff)
+      }
+  
+  
+  })
+  /////////////////////////////
+  //Player 1 bid again
+  /////////////////////////////
+  $okCan2.on("click", () => {
+    
+    $(".container").empty().append($player1)
+   
+    
+    
+    $(".container").append($bid1).append($callBluff1);
+    $okCan2.remove();
+
+
+
+  })
+  $bid1.on("click", () => {
+        $bid1.remove();
+        $callBluff1.remove();
+        
+        $(".container").append($sryIBlur1);
+      
+        $sryIBlur1.one("click", () => {
+          $("body").append($divAssignToDialog);
+          console.log($player1Arr)
+          numToDice1($player1Arr, $divAssignToDialog)
+          
+          $(".dialog").dialog()
+       })      
+       //////// this removes quantity buttons of lower number
+       for (let i = bidQuantity.length; i> 0 ; i--) {
+        if (bidQuantity[i] === $bidConfirmP2[0]) {
+           
+           bidQuantity = (bidQuantity.slice(i))
+           
+          }
+        }
+    
+        // BID tables creation
+        $buildBidQuantityTable();
+        $buildBidFaceTable();
+        $buildBidConfirmTable();
+        $bidConfirmCell.empty();
+        $bidConfirmTable.append($okCan)
+
+        $(".qty-btn").on("click", () =>{
+    
+         $bidConfirmCell.empty();
+          $bidConfirmP1 = []
+          $bidConfirmP1.push(parseInt(event.target.innerText));
+          console.log("player 2 bid quantity ", $bidConfirmP2)
+          console.log("player 1 bid quantity ", $bidConfirmP1)
+          bidFace = [1, 2, 3, 4, 5, 6]
+          $dicePicToArray();
+          console.log("bidDice1 ", $bidDice1[0])
+          console.log("bidDice2 ", $bidDice2[0])
+    
+          ////// if clicked the same quantity, this removes smaller dice faces
+          if ($bidConfirmP1[0] === $bidConfirmP2[0]) {
+              console.log("bidDice2 ", $bidDice2[0])
+            const findSameDice = bidFace.indexOf($bidDice2[0])
+            bidFace = bidFace.slice(findSameDice +1);
+            console.log(bidFace)
+            $bidFaceRow.empty();
+            $dicePicToArray();
+          } 
+         
+    
+        });
+
+
+ 
+
+
+
+
+    
+        // $(".bidDice").on("click", (event) => {
+          
+        //   $bidDice2 = []
+        //   $bidDice2.push(parseInt(event.target.id))
+        //   console.log($bidDice2)
+        //   $bidConfirmCell.empty();
+        //   for (let i =0; i < +$bidConfirmP2[0]; i++) {
+        //     console.log($bidConfirmP2[0]);
+        //     console.log($bidDice2);
+        //     if ($bidDice2[0] === 1) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/tqvRF9n/oneFace.png").attr("id", "1").height(100).width(100))} 
+        //     else if ($bidDice2[0] === 2) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/ctWXC65/twoFace.png").attr("id", "2").height(100).width(100))}
+        //     else if ($bidDice2[0] === 3) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/x5tVtcF/three-Face.png").attr("id", "3").height(100).width(100))}
+        //     else if ($bidDice2[0] === 4) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/0QsBwD8/fourFace.png").attr("id", "4").height(100).width(100))}
+        //     else if ($bidDice2[0] === 5) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/P4W27hm/fiveFace.png").attr("id", "5").height(100).width(100))}
+        //     else if ($bidDice2[0] === 6) {$bidConfirmCell.append($("<img class='bidDice2'>").attr("src", "https://i.ibb.co/hWr196n/sixFace.png").attr("id", "6").height(100).width(100))}
+          // }
+        //   $bidConfirmTable.append($okCan2)
+        // })
+      })
  
 
 
